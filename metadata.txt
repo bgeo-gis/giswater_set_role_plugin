@@ -1,0 +1,22 @@
+[general]
+name=giswater_set_role
+qgisMinimumVersion=3.28
+description=Sets the postgres role to the request parameter USER
+version=1.0
+author=David Erill, Luigi Pirelli, Natasa Cica, Nestor Ibañez, Adrian Valenciano, Barbara Rzepka, Sergi Muñoz, Josep Lluís Sala, Edgar Fusté, Albert Bofill, Sergi Maspons, Elies Bertran, Abel García Juanes, Xavier Torret
+; if True it's a server plugin
+server=True
+
+tags=server, postgres, roles, auth
+
+tracker=https://github.com/bgeo-gis/giswater_set_role_plugin
+homepage=https://github.com/bgeo-gis/giswater_set_role_plugin
+repository=https://github.com/bgeo-gis/giswater_set_role_plugin
+
+category=server
+
+experimental=False
+
+about=Sets the session_role parameter to all request layers provider to the value given by the parameter USER
+
+
