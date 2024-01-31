@@ -23,16 +23,17 @@ class GwSetRoleFilter(QgsAccessControlFilter):
         if username:
             dataSource = layer.source()
             uri = QgsDataSourceUri(dataSource)
+            QgsMessageLog.logMessage(f"INFO - GwSetRoleFilter URI -- {uri}", 'plugin', Qgis.Info)
+            if (uri.database()):
+                if (uri.hasParam("session_role")):
+                    uri.removeParam("session_role")
+                uri.setParam("session_role", username)
 
-            if (uri.hasParam("session_role")):
-                uri.removeParam("session_role")
-            uri.setParam("session_role", username)
+                newDS = uri.uri()
+                baseName = layer.name()
+                providerKey = layer.providerType()
 
-            newDS = uri.uri()
-            baseName = layer.name()
-            providerKey = layer.providerType()
-
-            layer.setDataSource(newDS, baseName, providerKey)
+                layer.setDataSource(newDS, baseName, providerKey)
 
         return super().layerFilterExpression(layer)
 
